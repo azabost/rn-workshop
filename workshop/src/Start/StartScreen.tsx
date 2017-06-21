@@ -5,15 +5,18 @@ import { UpdateTextAction } from './startActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { AppState } from '../AppState'
+import {Action} from '../Action'
 
 interface Props {
     text: string
+    dispatch: (Action) => void
 }
 
 class App extends Component<Props, void> {
 
     updateText() {
         // UpdateTextAction('text')
+        this.props.dispatch(UpdateTextAction('test'))
         console.log('Update')
     }
 

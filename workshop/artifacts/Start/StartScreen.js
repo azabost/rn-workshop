@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { UpdateTextAction } from './startActions';
 import { connect } from 'react-redux';
 class App extends Component {
     updateText() {
         // UpdateTextAction('text')
+        this.props.dispatch(UpdateTextAction('test'));
         console.log('Update');
     }
     render() {
