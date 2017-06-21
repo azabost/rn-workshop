@@ -1,7 +1,9 @@
+import add from '../src/add'
+
 describe('adding', ()=>{
     
-    it('adds two values', ()=>{ 
-        expect(1+1).toEqual(2)
+    it('adds two values', ()=>{         
+        expect(add(1,2)).toEqual(3)        
     })
 
 })
