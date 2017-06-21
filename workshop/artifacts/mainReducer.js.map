@@ -1,1 +1,1 @@
-{"version":3,"file":"mainReducer.js","sourceRoot":"","sources":["../src/mainReducer.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,eAAe,EAAC,MAAM,OAAO,CAAA;AACrC,OAAO,YAAY,MAAM,sBAAsB,CAAA;AAE/C,eAAe,eAAe,CAAC;IAC3B,UAAU,EAAE,YAAY;CAC3B,CAAC,CAAA"}
+{"version":3,"file":"mainReducer.js","sourceRoot":"","sources":["../src/mainReducer.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,eAAe,EAAC,MAAM,OAAO,CAAA;AACrC,OAAO,YAAY,MAAM,sBAAsB,CAAA;AAC/C,OAAO,iBAAiB,MAAM,qBAAqB,CAAA;AAEnD,eAAe,eAAe,CAAC;IAC3B,UAAU,EAAE,YAAY;IACxB,eAAe,EAAE,iBAAiB;CACrC,CAAC,CAAA"}
