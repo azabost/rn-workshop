@@ -8,7 +8,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Start } from '../Start/StartScreen'
-
+import List from '../List/List'
 declare var module
 
 storiesOf('Start screen', module)
@@ -25,3 +25,9 @@ storiesOf('Start screen', module)
       updateText={() => { }}>
     </Start>
   );
+
+storiesOf('List', module)
+  .add('Empty', () =>
+    <List>
+    </List>
+  )
