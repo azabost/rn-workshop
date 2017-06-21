@@ -9,14 +9,13 @@ import {Action} from '../Action'
 
 interface Props {
     text: string
-    dispatch: (Action) => void
+    updateText: (string) => void
 }
 
 class App extends Component<Props, void> {
 
-    updateText() {
-        // UpdateTextAction('text')
-        this.props.dispatch(UpdateTextAction('test'))
+    updateText() {        
+        this.props.updateText('test')
         console.log('Update')
     }
 
@@ -42,7 +41,13 @@ function mapStateToProps(state: AppState) {
     }
 }
 
-export default connect(mapStateToProps, undefined)(App)
+function mapDispatchToProps(dispatch: (Action)=>void, ownProps: any) {
+    return {
+        updateText: bindActionCreators(UpdateTextAction, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 const styles = StyleSheet.create({
     container: {

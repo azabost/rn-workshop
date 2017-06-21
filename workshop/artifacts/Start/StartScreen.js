@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { UpdateTextAction } from './startActions';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 class App extends Component {
     updateText() {
-        // UpdateTextAction('text')
-        this.props.dispatch(UpdateTextAction('test'));
+        this.props.updateText('test');
         console.log('Update');
     }
     render() {
@@ -23,7 +23,12 @@ function mapStateToProps(state) {
         text: state.startState.text
     };
 }
-export default connect(mapStateToProps, undefined)(App);
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        updateText: bindActionCreators(UpdateTextAction, dispatch)
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
