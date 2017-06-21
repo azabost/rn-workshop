@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class App extends Component {
     updateText() {
         // UpdateTextAction('text')
-        // console.log('Update')
+        console.log('Update');
     }
     render() {
         return (React.createElement(View, { style: styles.container },
@@ -13,7 +13,7 @@ class App extends Component {
             React.createElement(Text, null, "Changes you make will automatically reload."),
             React.createElement(Text, null, "Shake your phone to open the developer menu."),
             React.createElement(TouchableHighlight, null,
-                React.createElement(Text, { onPress: this.updateText }, this.props.text))));
+                React.createElement(Text, { onPress: this.updateText.bind(this) }, this.props.text))));
     }
 }
 function mapStateToProps(state) {

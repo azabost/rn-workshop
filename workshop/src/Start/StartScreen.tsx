@@ -14,7 +14,7 @@ class App extends Component<Props, void> {
 
     updateText() {
         // UpdateTextAction('text')
-        // console.log('Update')
+        console.log('Update')
     }
 
     render() {
@@ -24,7 +24,7 @@ class App extends Component<Props, void> {
                 <Text>Changes you make will automatically reload.</Text>
                 <Text>Shake your phone to open the developer menu.</Text>
                 <TouchableHighlight>
-                    <Text onPress={this.updateText}>
+                    <Text onPress={this.updateText.bind(this)}>
                         {this.props.text}
                     </Text>
                 </TouchableHighlight>
