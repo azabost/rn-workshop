@@ -8,5 +8,7 @@ storiesOf('Start screen', module)
     .add('with !', () => React.createElement(Start, { text: 'test!!!', updateText: () => { } }))
     .add('with long text', () => React.createElement(Start, { text: 'testing testing testing', updateText: () => { } }));
 storiesOf('List', module)
-    .add('Empty', () => React.createElement(List, null));
+    .add('Empty', () => React.createElement(List, null))
+    .add('With one element', () => React.createElement(List, { items: ['item'] }))
+    .add('With multiple element', () => React.createElement(List, { items: ['item', 'item2', 'item', 'item2 item2 item2 item2', 'item', 'item2', 'item', 'item2',] }));
 //# sourceMappingURL=stories.js.map
