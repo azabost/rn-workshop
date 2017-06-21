@@ -9,9 +9,15 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Start } from '../Start/StartScreen'
 
+declare var module
+
 storiesOf('Start screen', module)
   .add('with short text', () =>
     <Start text='test' updateText={() => { }}>
+    </Start>
+  )
+  .add('with !', () =>
+    <Start text='test!!!' updateText={() => { }}>
     </Start>
   )
   .add('with long text', () =>
