@@ -7,8 +7,8 @@
     "@types/react": "^15.0.30",
     "@types/react-native": "^0.44.11",
     "jest-expo": "~1.0.1",
-    "jest-preset-typescript-react-native": "^1.0.1",    
-    "react-test-renderer": "16.0.0-alpha.6",    
+    "jest-preset-typescript-react-native": "^1.0.1",
+    "react-test-renderer": "16.0.0-alpha.6",
     "rimraf": "^2.6.1",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4",
@@ -29,6 +29,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
+    "react-native-router-flux": "^3.40.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0"
   }
