@@ -1,0 +1,1 @@
+{"version":3,"file":"configureStore.js","sourceRoot":"","sources":["../src/configureStore.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,OAAO,EAA0B,MAAM,OAAO,CAAA;AAEpE,OAAO,WAAW,MAAM,eAAe,CAAA;AAGvC,MAAM,CAAC,OAAO,yBAAyB,eAAyB,SAAS;IACrE,MAAM,QAAQ,GAAG,OAAO,EACvB,CAAA;IACD,MAAM,CAAC,WAAW,CAAC,WAAW,EAAE,YAAY,EAAE,QAAQ,CAAC,CAAA;AAC3D,CAAC"}
