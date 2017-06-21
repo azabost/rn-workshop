@@ -1,6 +1,7 @@
 import { Action } from '../Action'
 import * as Types from './StartTypes'
 import { UpdateTextPayload } from './startActions'
+
 export interface StartState {
     text: string
 }
