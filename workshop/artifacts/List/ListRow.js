@@ -6,11 +6,15 @@ export default function listRow(issue) {
         } },
         React.createElement(View, { style: styles.container },
             React.createElement(Image, { style: styles.image, source: { uri: issue.avatarUrl } }),
-            React.createElement(Text, { style: styles.rowText }, issue.title))));
+            React.createElement(Text, { style: styles.rowText },
+                issue.title,
+                issue.title,
+                issue.title,
+                issue.title))));
 }
 const styles = StyleSheet.create({
     row: {
-        height: 100,
+        minHeight: 150,
         borderBottomColor: 'red',
         borderBottomWidth: 1,
     },

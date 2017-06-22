@@ -10,15 +10,15 @@ export default function listRow(issue: Issue) {
         }}>
             <View style={styles.container}>
                 <Image style={styles.image} source={{ uri: issue.avatarUrl }} />
-                <Text style={styles.rowText}>{issue.title}</Text>
+                <Text style={styles.rowText}>{issue.title}{issue.title}{issue.title}{issue.title}</Text>
             </View>
         </TouchableHighlight>
     )
 }
 
 const styles = StyleSheet.create({
-    row: {
-        height: 100,
+    row: {                
+        minHeight: 150,     
         borderBottomColor: 'red',
         borderBottomWidth: 1,
     } as ViewStyle,

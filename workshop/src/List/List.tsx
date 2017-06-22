@@ -24,6 +24,12 @@ export default class List extends Component<Props, State> {
         };
     }
 
+    componentWillReceiveProps(newProps: Props) {
+        if (newProps.items !== this.props.items) {
+            this.setState({ dataSource: this.state.dataSource.cloneWithRows(newProps.items) })
+        }
+    }
+
     render() {
         return (
             <View style={[this.props.style, styles.container]}>

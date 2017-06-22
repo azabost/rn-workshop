@@ -27,16 +27,16 @@ declare var module
 //     </Start>
 //   );
 
-storiesOf('List', module)
-  .add('Empty', () =>
-    <List>
-    </List>
-  )
-  .add('With one element', () =>
-    <List items={['item']}>
-    </List>
-  )
-  .add('With multiple element', () =>
-    <List items={['item', 'item2', 'item', 'item2 item2 item2 item2', 'item', 'item2', 'item', 'item2',]}>
-    </List>
-  )
+// storiesOf('List', module)
+//   .add('Empty', () =>
+//     <List>
+//     </List>
+//   )
+//   .add('With one element', () =>
+//     <List items={['item']}>
+//     </List>
+//   )
+//   .add('With multiple element', () =>
+//     <List items={['item', 'item2', 'item', 'item2 item2 item2 item2', 'item', 'item2', 'item', 'item2',]}>
+//     </List>
+//   )

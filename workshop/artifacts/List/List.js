@@ -11,6 +11,11 @@ export default class List extends Component {
             dataSource: ds.cloneWithRows(rows),
         };
     }
+    componentWillReceiveProps(newProps) {
+        if (newProps.items !== this.props.items) {
+            this.setState({ dataSource: this.state.dataSource.cloneWithRows(newProps.items) });
+        }
+    }
     render() {
         return (React.createElement(View, { style: [this.props.style, styles.container] },
             !this.props.items && React.createElement(Text, { style: styles.listView }, " Im empty "),
