@@ -1,32 +1,32 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { UpdateTextAction } from './startActions';
+import { UpdateTextAction, downloadData } from './startActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 export class Start extends Component {
     updateText() {
-        this.props.updateText('test');
+        this.props.downloadData();
         console.log('Update');
     }
+    downloaDataButton() {
+        return (React.createElement(TouchableHighlight, null,
+            React.createElement(Text, { onPress: this.updateText.bind(this) }, "Download data")));
+    }
     render() {
-        return (React.createElement(View, { style: styles.container },
-            React.createElement(Text, null, "Open up App.jss to start working on your app!"),
-            React.createElement(Text, null, "Changes you make will automatically reload."),
-            React.createElement(TouchableHighlight, null,
-                React.createElement(Text, { onPress: this.updateText.bind(this) },
-                    "test ",
-                    this.props.text))));
+        return (React.createElement(View, { style: styles.container }, !this.props.issues && this.downloaDataButton()));
     }
 }
 function mapStateToProps(state) {
     return {
-        text: state.startState.text
+        text: state.startState.text,
+        issues: state.startState.issues
     };
 }
 function mapDispatchToProps(dispatch, ownProps) {
     return {
-        updateText: bindActionCreators(UpdateTextAction, dispatch)
+        updateText: bindActionCreators(UpdateTextAction, dispatch),
+        downloadData: bindActionCreators(downloadData, dispatch)
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

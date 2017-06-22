@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react'
 import { StyleSheet, Text, TouchableHighlight, View, ViewStyle } from 'react-native';
-import { UpdateTextAction } from './startActions'
+import { UpdateTextAction, downloadData, Issue } from './startActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { AppState } from '../AppState'
@@ -9,26 +9,32 @@ import { Action } from '../Action'
 
 interface Props {
     text: string
+    issues?: [Issue]
     updateText: (string) => void
+    downloadData: () => void
 }
 
 export class Start extends Component<Props, void> {
 
     updateText() {
-        this.props.updateText('test')
+        this.props.downloadData()
         console.log('Update')
+    }
+
+    downloaDataButton() {
+        return (
+            <TouchableHighlight>
+                <Text onPress={this.updateText.bind(this)}>
+                    Download data
+                    </Text>
+            </TouchableHighlight>
+        )
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>Open up App.jss to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <TouchableHighlight>
-                    <Text onPress={this.updateText.bind(this)}>
-                        test {this.props.text}
-                    </Text>
-                </TouchableHighlight>
+                {!this.props.issues && this.downloaDataButton()}
             </View>
         );
     }
@@ -36,13 +42,15 @@ export class Start extends Component<Props, void> {
 
 function mapStateToProps(state: AppState) {
     return {
-        text: state.startState.text
+        text: state.startState.text,
+        issues: state.startState.issues
     }
 }
 
 function mapDispatchToProps(dispatch: (Action) => void, ownProps: any) {
     return {
-        updateText: bindActionCreators(UpdateTextAction, dispatch)
+        updateText: bindActionCreators(UpdateTextAction, dispatch),
+        downloadData: bindActionCreators(downloadData, dispatch)
     }
 }
 
