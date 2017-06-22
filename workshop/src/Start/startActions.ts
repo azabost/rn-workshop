@@ -22,7 +22,7 @@ export class DownloadIssuesPayload {
 }
 
 export class Issue {
-    constructor(public title: string) { }
+    constructor(public title: string, public avatarUrl: string) { }
 }
 
 export function downloadData() {
@@ -31,7 +31,7 @@ export function downloadData() {
         const response = await fetch(url, 'GET')
         const responseJSON = await response.json()
         const issues = responseJSON.map((object) => {
-            return new Issue(object.title)
+            return new Issue(object.title, object.user.avatar_url)
         })
         dispatch(downloadedAction(issues))
     }

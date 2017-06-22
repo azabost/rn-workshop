@@ -2,9 +2,10 @@ import * as React from 'react'
 import { Component } from 'react'
 import { View, Text, ListView, StyleSheet, ViewStyle, TextStyle } from 'react-native'
 import ListRow from './ListRow'
+import { Issue } from '../Start/startActions'
 
 interface Props {
-    items?: [string]
+    items?: [Issue]
 }
 
 interface State {

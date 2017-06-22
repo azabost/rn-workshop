@@ -14,16 +14,10 @@ export class Start extends Component {
         return (React.createElement(TouchableHighlight, null,
             React.createElement(Text, { onPress: this.updateText.bind(this) }, "Download data")));
     }
-    issueTitles() {
-        const titles = this.props.issues.map((issue) => {
-            return issue.title;
-        });
-        return titles;
-    }
     render() {
         return (React.createElement(View, { style: styles.container },
             !this.props.issues && this.downloaDataButton(),
-            this.props.issues && React.createElement(List, { items: this.issueTitles() })));
+            this.props.issues && React.createElement(List, { items: this.props.issues })));
     }
 }
 function mapStateToProps(state) {

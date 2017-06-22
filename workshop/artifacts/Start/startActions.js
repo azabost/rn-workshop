@@ -26,8 +26,9 @@ export class DownloadIssuesPayload {
     }
 }
 export class Issue {
-    constructor(title) {
+    constructor(title, avatarUrl) {
         this.title = title;
+        this.avatarUrl = avatarUrl;
     }
 }
 export function downloadData() {
@@ -36,7 +37,7 @@ export function downloadData() {
         const response = yield fetch(url, 'GET');
         const responseJSON = yield response.json();
         const issues = responseJSON.map((object) => {
-            return new Issue(object.title);
+            return new Issue(object.title, object.user.avatar_url);
         });
         dispatch(downloadedAction(issues));
     });

@@ -30,20 +30,13 @@ export class Start extends Component<Props, void> {
                 </Text>
             </TouchableHighlight>
         )
-    }
-
-    issueTitles(): [string] {
-        const titles = this.props.issues.map((issue: Issue) => {
-            return issue.title
-        }) as [string]
-        return titles
-    }
+    }    
 
     render() {
         return (
             <View style={styles.container}>
                 {!this.props.issues && this.downloaDataButton()}
-                {this.props.issues && <List items={this.issueTitles()} />}
+                {this.props.issues && <List items={this.props.issues} />}
             </View>
         );
     }
