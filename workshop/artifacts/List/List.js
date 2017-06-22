@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
     },
     listView: {
         flex: 1,
-        alignSelf: 'stretch',
-        marginTop: 100
+        alignSelf: 'stretch'
     }
 });
 //# sourceMappingURL=List.js.map

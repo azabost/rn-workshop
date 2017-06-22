@@ -16,11 +16,11 @@ export default class List extends Component<Props, State> {
     constructor(props) {
         super(props)
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-        const rows = this.props.items || []         
+        const rows = this.props.items || []
         this.state = {
             dataSource: ds.cloneWithRows(rows),
         };
-    }   
+    }
 
     render() {
         return (
@@ -28,7 +28,7 @@ export default class List extends Component<Props, State> {
                 {!this.props.items && <Text style={styles.listView}> Im empty </Text>}
                 <ListView style={styles.listView}
                     dataSource={this.state.dataSource}
-                    renderRow={ListRow} />                
+                    renderRow={ListRow} />
             </View>
         )
     }
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     } as ViewStyle,
     listView: {
         flex: 1,
-        alignSelf: 'stretch',
-        marginTop: 100
-    } as ViewStyle    
+        alignSelf: 'stretch'
+    } as ViewStyle
 });
