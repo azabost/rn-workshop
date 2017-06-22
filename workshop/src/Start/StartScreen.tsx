@@ -36,7 +36,7 @@ export class Start extends Component<Props, void> {
         return (
             <View style={styles.container}>
                 {!this.props.issues && this.downloaDataButton()}
-                {this.props.issues && <List items={this.props.issues} />}
+                {this.props.issues && <List style={styles.list} items={this.props.issues} />}
             </View>
         );
     }
@@ -64,5 +64,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    } as ViewStyle
+    } as ViewStyle,
+    list: {
+        marginTop: 65
+    }
 });

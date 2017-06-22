@@ -6,6 +6,7 @@ import { Issue } from '../Start/startActions'
 
 interface Props {
     items?: [Issue]
+    style: ViewStyle
 }
 
 interface State {
@@ -25,7 +26,7 @@ export default class List extends Component<Props, State> {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[this.props.style, styles.container]}>
                 {!this.props.items && <Text style={styles.listView}> Im empty </Text>}
                 <ListView style={styles.listView}
                     dataSource={this.state.dataSource}

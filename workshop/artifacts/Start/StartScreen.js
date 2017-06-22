@@ -17,7 +17,7 @@ export class Start extends Component {
     render() {
         return (React.createElement(View, { style: styles.container },
             !this.props.issues && this.downloaDataButton(),
-            this.props.issues && React.createElement(List, { items: this.props.issues })));
+            this.props.issues && React.createElement(List, { style: styles.list, items: this.props.issues })));
     }
 }
 function mapStateToProps(state) {
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    list: {
+        marginTop: 65
     }
 });
 //# sourceMappingURL=StartScreen.js.map

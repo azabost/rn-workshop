@@ -12,7 +12,7 @@ export default class List extends Component {
         };
     }
     render() {
-        return (React.createElement(View, { style: styles.container },
+        return (React.createElement(View, { style: [this.props.style, styles.container] },
             !this.props.items && React.createElement(Text, { style: styles.listView }, " Im empty "),
             React.createElement(ListView, { style: styles.listView, dataSource: this.state.dataSource, renderRow: ListRow })));
     }
