@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     row: {
         height: 40,
-        backgroundColor: 'red',
+        backgroundColor: 'blue',
         alignItems: 'center'
     },
     rowText: {

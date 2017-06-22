@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     } as ViewStyle,
     row: {
         height: 40,
-        backgroundColor: 'red',
+        backgroundColor: 'blue',
         alignItems: 'center'
     } as ViewStyle,
     rowText: {
