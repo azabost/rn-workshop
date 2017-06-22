@@ -1,15 +1,13 @@
 import { Action } from '../Action'
 import * as Types from './StartTypes'
+import { Issue } from './StartScreen'
 import { UpdateTextPayload, FetchGithubAction, FetchGithubPayload } from './startActions'
 
 export interface StartState {
-    text: string,
-    json?: any
+    items?: [Issue]
 }
 
 const DEFAULT_STATE: StartState = {
-    text: 'Default value',
-    json: ''
 }
 
 export default function (state: StartState = DEFAULT_STATE, action: Action<any>): StartState {
@@ -20,11 +18,11 @@ export default function (state: StartState = DEFAULT_STATE, action: Action<any>)
                 ...state,
                 text: updateTextAction.payload.text
             }
-        case Types.FETCH_GITHUB: 
+        case Types.FETCH_GITHUB:
             const fetchGithubAction = action as Action<FetchGithubPayload>
             return {
                 ...state,
-                json: fetchGithubAction.payload.json
+                items: fetchGithubAction.payload.items
             }
         default:
             return state

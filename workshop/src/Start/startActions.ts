@@ -1,6 +1,8 @@
 import { Action } from '../Action'
 import { UPDATE_TEXT, FETCH_GITHUB } from './StartTypes'
 import { Actions } from 'react-native-router-flux'
+import { Issue } from './StartScreen'
+
 export class UpdateTextPayload {
     text: string
     constructor(text: string) {
@@ -18,16 +20,16 @@ export function UpdateTextAction(text: string): Action<UpdateTextPayload> {
 }
 
 export class FetchGithubPayload {
-    json: string
-    constructor(json: string) {
-        this.json = json
+    items: [Issue]
+    constructor(items: [Issue]) {
+        this.items = items
     }
 }
 
-export function FetchGithubAction(json: any): Action<FetchGithubPayload> {
+export function FetchGithubAction(items: [Issue]): Action<FetchGithubPayload> {
     return {
         type: FETCH_GITHUB,
-        payload: new FetchGithubPayload(json)
+        payload: new FetchGithubPayload(items)
     }
 }
 
@@ -36,9 +38,14 @@ export function fetchGithub() {
         try {
             console.info("Fetching github...")
             var response = await fetch('https://api.github.com/repos/facebook/react-native/issues?state=open')
-            var responseJSON = await response.json()
-            console.info("Fetched from github:", responseJSON)
-            dispatch(FetchGithubAction(responseJSON))
+            var responseJSON = await response.json() 
+            var issues = responseJSON.map(function mapToIssues(issue) {
+                var id = issue.id
+                var title = issue.title
+                return new Issue(id, title)
+            })
+            console.info("Fetched from github:", issues)
+            dispatch(FetchGithubAction(issues))
         } catch (error) {
             console.error(error)
         }

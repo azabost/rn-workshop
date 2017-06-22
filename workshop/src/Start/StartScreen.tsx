@@ -8,8 +8,7 @@ import { AppState } from '../AppState'
 import { Action } from '../Action'
 
 interface Props {
-    items?: [string]
-    json?: any
+    items?: [Issue]
     fetch: () => void
 }
 
@@ -17,27 +16,34 @@ interface State {
     dataSource: any
 }
 
+export class Issue {
+    id: number
+    title: string
+    constructor(id: number, title: string) {
+        this.id = id
+        this.title = title
+    }
+}
+
 export class Start extends Component<Props, State> {
 
     constructor(props) {
         super(props);
-        console.info("Props json:", this.props.json)
-
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        const rows = []
+        const rows = this.props.items || []
         this.state = {
             dataSource: ds.cloneWithRows(rows),
         };
     }
 
     componentWillReceiveProps(nextProps: Props) {
-        let rows = nextProps.json
+        let rows = nextProps.items
         this.setState((previousState: State) => ({
                 dataSource: previousState.dataSource.cloneWithRows(rows)
         }))
     }
 
-    renderRow(data: any) {
+    renderRow(data: Issue) {
         return (
             <View style={styles.row} key={data.id}>
                 <Text style={styles.rowText}>{data.title}</Text>
@@ -48,7 +54,7 @@ export class Start extends Component<Props, State> {
     render() {
         return (
             <View style={styles.container}>                
-                {!this.props.json && <Text style={styles.listView}> Im empty </Text>}
+                {!this.props.items && <Text style={styles.listView}> Im empty </Text>}
                 <ListView style={styles.listView}
                     dataSource={this.state.dataSource}
                     renderRow={this.renderRow.bind(this)} />
@@ -63,8 +69,7 @@ export class Start extends Component<Props, State> {
 
 function mapStateToProps(state: AppState) {
     return {
-        text: state.startState.text,
-        json: state.startState.json
+        items: state.startState.items
     }
 }
 
