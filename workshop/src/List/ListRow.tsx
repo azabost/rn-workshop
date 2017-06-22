@@ -10,7 +10,7 @@ export default function listRow(issue: Issue) {
         }}>
             <View style={styles.container}>
                 <Image style={styles.image} source={{ uri: issue.avatarUrl }} />
-                <Text>{issue.title}</Text>
+                <Text style={styles.rowText}>{issue.title}</Text>
             </View>
         </TouchableHighlight>
     )
@@ -26,10 +26,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between'
     } as ViewStyle,
-    rowText: {
-        marginTop: 10,
-        backgroundColor: 'red',
+    rowText: {            
         alignSelf: 'center',
+        marginBottom: 20
     } as TextStyle,
     bottomRow: {
         marginBottom: 10,
@@ -38,10 +37,10 @@ const styles = StyleSheet.create({
     } as TextStyle,
     image: {
         marginTop: 10,
-        borderRadius: 35,
+        borderRadius: 25,
         alignSelf: 'center',
         backgroundColor: 'blue',
-        height: 70,
-        width: 70
+        height: 50,
+        width: 50
     } as ViewStyle
 })

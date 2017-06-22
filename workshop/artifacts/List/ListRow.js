@@ -6,7 +6,7 @@ export default function listRow(issue) {
         } },
         React.createElement(View, { style: styles.container },
             React.createElement(Image, { style: styles.image, source: { uri: issue.avatarUrl } }),
-            React.createElement(Text, null, issue.title))));
+            React.createElement(Text, { style: styles.rowText }, issue.title))));
 }
 const styles = StyleSheet.create({
     row: {
@@ -19,9 +19,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     rowText: {
-        marginTop: 10,
-        backgroundColor: 'red',
         alignSelf: 'center',
+        marginBottom: 20
     },
     bottomRow: {
         marginBottom: 10,
@@ -30,11 +29,11 @@ const styles = StyleSheet.create({
     },
     image: {
         marginTop: 10,
-        borderRadius: 35,
+        borderRadius: 25,
         alignSelf: 'center',
         backgroundColor: 'blue',
-        height: 70,
-        width: 70
+        height: 50,
+        width: 50
     }
 });
 //# sourceMappingURL=ListRow.js.map
