@@ -7,20 +7,32 @@ export default function listRow(data: string) {
         <TouchableHighlight style={styles.row} key={data} onPress={() => {
             console.log('tets')
         }}>
-            <Text style={styles.rowText}>{data}</Text>
+            <View style={styles.container}>
+                <Text style={styles.rowText}>{data}</Text>
+                <Text style={styles.bottomRow}>{data}</Text>
+            </View>
         </TouchableHighlight>
     )
 }
 
 const styles = StyleSheet.create({
     row: {
-        height: 50,
+        height: 100,
         borderBottomColor: 'red',
-        borderBottomWidth: 1,
-        alignItems: 'stretch',
-        justifyContent: 'center'
+        borderBottomWidth: 1,                        
     } as ViewStyle,
-    rowText: {
+    container: {
+        flex: 1,                
+        justifyContent: 'space-between'
+    } as ViewStyle,
+    rowText: {  
+        marginTop: 10,  
+        backgroundColor: 'red',        
+        alignSelf: 'center',
+    } as TextStyle,
+    bottomRow: {      
+        marginBottom: 10,  
+        backgroundColor: 'green',
         alignSelf: 'center',
     } as TextStyle
 })

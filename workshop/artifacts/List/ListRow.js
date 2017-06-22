@@ -1,20 +1,31 @@
 import * as React from 'react';
-import { Text, TouchableHighlight, StyleSheet } from 'react-native';
+import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
 export default function listRow(data) {
     return (React.createElement(TouchableHighlight, { style: styles.row, key: data, onPress: () => {
             console.log('tets');
         } },
-        React.createElement(Text, { style: styles.rowText }, data)));
+        React.createElement(View, { style: styles.container },
+            React.createElement(Text, { style: styles.rowText }, data),
+            React.createElement(Text, { style: styles.bottomRow }, data))));
 }
 const styles = StyleSheet.create({
     row: {
-        height: 50,
+        height: 100,
         borderBottomColor: 'red',
         borderBottomWidth: 1,
-        alignItems: 'stretch',
-        justifyContent: 'center'
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'space-between'
     },
     rowText: {
+        marginTop: 10,
+        backgroundColor: 'red',
+        alignSelf: 'center',
+    },
+    bottomRow: {
+        marginBottom: 10,
+        backgroundColor: 'green',
         alignSelf: 'center',
     }
 });
