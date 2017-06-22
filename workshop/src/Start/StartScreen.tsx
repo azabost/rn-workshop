@@ -1,48 +1,76 @@
 import * as React from 'react';
 import { Component } from 'react'
-import { StyleSheet, Text, TouchableHighlight, View, ViewStyle } from 'react-native';
-import { UpdateTextAction } from './startActions'
+import { View, Text, ListView, StyleSheet, ViewStyle, TextStyle } from 'react-native'
+import { UpdateTextAction, fetchGithub } from './startActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { AppState } from '../AppState'
 import { Action } from '../Action'
 
 interface Props {
-    text: string
-    updateText: (string) => void
+    items?: [string]
+    json?: any
+    fetch: () => void
 }
 
-export class Start extends Component<Props, void> {
+interface State {
+    dataSource: any
+}
 
-    updateText() {
-        this.props.updateText('test')
-        console.log('Update')
+export class Start extends Component<Props, State> {
+
+    constructor(props) {
+        super(props);
+        console.info("Props json:", this.props.json)
+
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        const rows = []
+        this.state = {
+            dataSource: ds.cloneWithRows(rows),
+        };
+    }
+
+    componentWillReceiveProps(nextProps: Props) {
+        let rows = nextProps.json
+        this.setState((previousState: State) => ({
+                dataSource: previousState.dataSource.cloneWithRows(rows)
+        }))
+    }
+
+    renderRow(data: any) {
+        return (
+            <View style={styles.row} key={data.id}>
+                <Text style={styles.rowText}>{data.title}</Text>
+            </View>
+        )
     }
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Open up App.jss to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <TouchableHighlight>
-                    <Text onPress={this.updateText.bind(this)}>
-                        test {this.props.text}
-                    </Text>
-                </TouchableHighlight>
+            <View style={styles.container}>                
+                {!this.props.json && <Text style={styles.listView}> Im empty </Text>}
+                <ListView style={styles.listView}
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderRow.bind(this)} />
             </View>
-        );
+        )
+    }
+
+    componentDidMount() {
+        this.props.fetch()
     }
 }
 
 function mapStateToProps(state: AppState) {
     return {
-        text: state.startState.text
+        text: state.startState.text,
+        json: state.startState.json
     }
 }
 
 function mapDispatchToProps(dispatch: (Action) => void, ownProps: any) {
     return {
-        updateText: bindActionCreators(UpdateTextAction, dispatch)
+        fetch: bindActionCreators(fetchGithub, dispatch)
     }
 }
 
@@ -54,5 +82,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    } as ViewStyle
+    } as ViewStyle,
+    listView: {
+        flex: 1,
+        alignSelf: 'stretch',
+        marginTop: 100
+    } as ViewStyle,
+    row: {
+        height: 40,
+        backgroundColor: 'green',
+        alignItems: 'center'
+    } as ViewStyle,
+    rowText: {
+        alignSelf: 'center'
+    } as TextStyle
 });

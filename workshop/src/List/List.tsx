@@ -10,15 +10,30 @@ interface State {
     dataSource: any
 }
 
-export default class List extends Component<Props, State> {
+export class List extends Component<Props, State> {
 
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        const rows = this.props.items != undefined ? this.props.items : []         
+        const rows = this.props.items != undefined ? this.props.items : []
         this.state = {
             dataSource: ds.cloneWithRows(rows),
         };
+    }
+
+    componentDidMount() {
+        return fetch('https://facebook.github.io/react-native/movies.json')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                const rows = responseJson
+                console.debug("Fetched: ", rows)
+                this.setState((previousState: State) => ({
+                    dataSource: previousState.dataSource.cloneWithRows(rows)
+                }))
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     renderRow(data: string) {
@@ -35,7 +50,7 @@ export default class List extends Component<Props, State> {
                 {!this.props.items && <Text style={styles.listView}> Im empty </Text>}
                 <ListView style={styles.listView}
                     dataSource={this.state.dataSource}
-                    renderRow={this.renderRow.bind(this)} />                
+                    renderRow={this.renderRow.bind(this)} />
             </View>
         )
     }
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
     } as ViewStyle,
     row: {
         height: 40,
-        backgroundColor: 'blue',
+        backgroundColor: 'green',
         alignItems: 'center'
     } as ViewStyle,
     rowText: {
