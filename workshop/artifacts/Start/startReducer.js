@@ -8,7 +8,7 @@ export default function (state = DEFAULT_STATE, action) {
         case Types.UPDATE_TEXT:
             const updateTextAction = action;
             return Object.assign({}, state, { text: updateTextAction.payload.text });
-        case Types.UPDATE_TEXT:
+        case Types.ISSUES_DOWNLOADED:
             const issuesAction = action;
             return Object.assign({}, state, { issues: issuesAction.payload.issues });
         default:

@@ -20,7 +20,7 @@ export default function (state: StartState = DEFAULT_STATE, action: Action<any>)
                 ...state,
                 text: updateTextAction.payload.text
             }
-        case Types.UPDATE_TEXT:
+        case Types.ISSUES_DOWNLOADED:
             const issuesAction = action as Action<DownloadIssuesPayload>
             return {
                 ...state,

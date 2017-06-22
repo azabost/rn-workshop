@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { AppState } from '../AppState'
 import { Action } from '../Action'
+import List from '../List/List'
 
 interface Props {
     text: string
@@ -26,15 +27,23 @@ export class Start extends Component<Props, void> {
             <TouchableHighlight>
                 <Text onPress={this.updateText.bind(this)}>
                     Download data
-                    </Text>
+                </Text>
             </TouchableHighlight>
         )
+    }
+
+    issueTitles(): [string] {
+        const titles = this.props.issues.map((issue: Issue) => {
+            return issue.title
+        }) as [string]
+        return titles
     }
 
     render() {
         return (
             <View style={styles.container}>
                 {!this.props.issues && this.downloaDataButton()}
+                {this.props.issues && <List items={this.issueTitles()} />}
             </View>
         );
     }

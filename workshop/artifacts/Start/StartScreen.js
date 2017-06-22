@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { UpdateTextAction, downloadData } from './startActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import List from '../List/List';
 export class Start extends Component {
     updateText() {
         this.props.downloadData();
@@ -13,8 +14,16 @@ export class Start extends Component {
         return (React.createElement(TouchableHighlight, null,
             React.createElement(Text, { onPress: this.updateText.bind(this) }, "Download data")));
     }
+    issueTitles() {
+        const titles = this.props.issues.map((issue) => {
+            return issue.title;
+        });
+        return titles;
+    }
     render() {
-        return (React.createElement(View, { style: styles.container }, !this.props.issues && this.downloaDataButton()));
+        return (React.createElement(View, { style: styles.container },
+            !this.props.issues && this.downloaDataButton(),
+            this.props.issues && React.createElement(List, { items: this.issueTitles() })));
     }
 }
 function mapStateToProps(state) {
