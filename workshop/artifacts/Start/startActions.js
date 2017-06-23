@@ -8,17 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { UPDATE_TEXT, ISSUES_DOWNLOADED } from './StartTypes';
 import { Actions } from 'react-native-router-flux';
-export class UpdateTextPayload {
-    constructor(text) {
-        this.text = text;
-    }
-}
 export function UpdateTextAction(text) {
     Actions.app();
     return {
         type: UPDATE_TEXT,
         payload: new UpdateTextPayload(text)
     };
+}
+export class UpdateTextPayload {
+    constructor(text) {
+        this.text = text;
+    }
 }
 export class DownloadIssuesPayload {
     constructor(issues) {

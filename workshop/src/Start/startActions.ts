@@ -1,12 +1,7 @@
 import { Action } from '../Action'
 import { UPDATE_TEXT, ISSUES_DOWNLOADED } from './StartTypes'
 import { Actions } from 'react-native-router-flux'
-export class UpdateTextPayload {
-    text: string
-    constructor(text: string) {
-        this.text = text
-    }
-}
+
 
 export function UpdateTextAction(text: string): Action<UpdateTextPayload> {
     Actions.app()
@@ -17,8 +12,12 @@ export function UpdateTextAction(text: string): Action<UpdateTextPayload> {
 
 }
 
+export class UpdateTextPayload {
+    constructor(public text: string) { }
+}
+
 export class DownloadIssuesPayload {
-    constructor(public issues: [Issue]) {}
+    constructor(public issues: [Issue]) { }
 }
 
 export class Issue {

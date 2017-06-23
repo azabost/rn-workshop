@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { View, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
 export default function listRow(issue) {
-    return (React.createElement(TouchableHighlight, { style: styles.row, key: issue.title, onPress: () => {
-            console.log(issue.title);
-        } },
+    return (React.createElement(TouchableHighlight, { style: [styles.row], key: issue.title, onPress: () => { } },
         React.createElement(View, { style: styles.container },
             React.createElement(Image, { style: styles.image, source: { uri: issue.avatarUrl } }),
             React.createElement(Text, { style: styles.rowText },
@@ -14,17 +12,16 @@ export default function listRow(issue) {
 }
 const styles = StyleSheet.create({
     row: {
-        minHeight: 150,
         borderBottomColor: 'red',
         borderBottomWidth: 1,
     },
     container: {
         flex: 1,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        flexDirection: 'row'
     },
     rowText: {
         alignSelf: 'center',
-        marginBottom: 20
     },
     bottomRow: {
         marginBottom: 10,
@@ -32,8 +29,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     image: {
-        marginTop: 10,
         borderRadius: 25,
+        marginLeft: 20,
+        marginRight: 10,
         alignSelf: 'center',
         backgroundColor: 'blue',
         height: 50,

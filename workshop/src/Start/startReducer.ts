@@ -12,7 +12,9 @@ const DEFAULT_STATE: StartState = {
     issues: undefined
 }
 
-export default function (state: StartState = DEFAULT_STATE, action: Action<any>): StartState {
+type ReducerPayloads = DownloadIssuesPayload | UpdateTextPayload
+
+export default function (state: StartState = DEFAULT_STATE, action: Action<ReducerPayloads>): StartState {
     switch (action.type) {
         case Types.UPDATE_TEXT:
             const updateTextAction = action as Action<UpdateTextPayload>
