@@ -4,3 +4,6 @@ npm-debug.*
 /artifacts/
 /.vscode/
 /.idea/
+*.js
+*.js.map
+
